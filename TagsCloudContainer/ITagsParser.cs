@@ -5,6 +5,6 @@ namespace TagsCloudContainer
 {
     public interface ITagsParser
     {
-        IEnumerable<Tuple<string, int>> ParseTags();
+        IEnumerable<Tuple<string, int>> ParseTags(string text);
     }
 }

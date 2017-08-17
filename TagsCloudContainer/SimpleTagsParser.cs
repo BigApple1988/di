@@ -6,21 +6,28 @@ namespace TagsCloudContainer
 {
     public class SimpleTagsParser :ITagsParser
     {
-        private readonly ITextLoader textLoader;
+        private readonly IBoringWordsService boringWordsService;
 
-        public SimpleTagsParser(ITextLoader textLoader)
+        public SimpleTagsParser(IBoringWordsService boringWordsService)
         {
-            this.textLoader = textLoader;
+            this.boringWordsService = boringWordsService;
         }
 
-        public IEnumerable<Tuple<string, int>> ParseTags()
+//        public SimpleTagsParser(ITextLoader textLoader)
+//        {
+//            this.textLoader = textLoader;
+//        }
+
+        public IEnumerable<Tuple<string, int>> ParseTags(string text)
         {
-            var text = textLoader.LoadText();
             var splitted = text.Split(new []{'\r','\n'},StringSplitOptions.RemoveEmptyEntries);
-            var tuple = splitted.GroupBy(s => s.ToLower()).Select(s => Tuple.Create(s.Key, s.Count()));
+            var boringWords = boringWordsService.GetBoringWords();
+            var withoutBoring = splitted.Select(s => s).Where(s => !boringWords.Contains(s));
+            var tuple = withoutBoring.GroupBy(s => s.ToLower()).Select(s => Tuple.Create(s.Key, s.Count()));
             return tuple;
         }
 
 
     }
+
 }

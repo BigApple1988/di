@@ -3,6 +3,6 @@
 
     public interface ITextLoader
     {
-        string LoadText();
+        string LoadText(string fileName);
     }
 }

@@ -38,8 +38,20 @@
     <Reference Include="CommandLine, Version=1.9.71.2, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
       <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
     </Reference>
+    <Reference Include="FakeItEasy, Version=4.0.0.0, Culture=neutral, PublicKeyToken=eff28e2146d5fd2c, processorArchitecture=MSIL">
+      <HintPath>..\packages\FakeItEasy.4.0.0\lib\net45\FakeItEasy.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions, Version=4.19.3.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.19.3\lib\net45\FluentAssertions.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions.Core, Version=4.19.3.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.19.3\lib\net45\FluentAssertions.Core.dll</HintPath>
+    </Reference>
     <Reference Include="NHunspell, Version=1.2.5554.16953, Culture=neutral, PublicKeyToken=1ac793ea843b4366, processorArchitecture=MSIL">
       <HintPath>..\packages\NHunspell.1.2.5554.16953\lib\net\NHunspell.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,8 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SimpleBoringWordsService.cs" />
     <Compile Include="CircularCloudLayouter.cs" />
-    <Compile Include="FileTextLoader.cs" />
+    <Compile Include="IBoringWordsService.cs" />
+    <Compile Include="TextLoaders\ITextLoaderFactory.cs" />
+    <Compile Include="TextLoaders\SimpleFileTextLoader.cs" />
+    <Compile Include="TextLoaders\TxtFileTextLoader.cs" />
     <Compile Include="IImageFIleGenerator.cs" />
     <Compile Include="ISettings.cs" />
     <Compile Include="ITagsParser.cs" />
@@ -64,6 +80,7 @@
     <Compile Include="Rectangle.cs" />
     <Compile Include="SimpleTagsParser.cs" />
     <Compile Include="TagsCloudVizualizer.cs" />
+    <Compile Include="Tests\SimpleTagsParser_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
